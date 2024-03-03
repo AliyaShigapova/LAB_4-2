@@ -1,4 +1,4 @@
-class Фигура:
+class Shape:
     """
     Базовый класс для геометрических фигур.
 
@@ -16,16 +16,16 @@ class Фигура:
         get_площадь(self) -> float: Возвращает площадь фигуры.
     """
 
-    def __init__(self, название: str) -> None:
+    def __init__(self, name: str) -> None:
         """
         Инициализирует фигуру.
 
         Args:
-            название (str): Название фигуры.
+            name (str): Название фигуры.
         """
-        self._название = название
-        self._периметр = None
-        self._площадь = None
+        self._name = name
+        self._perimeter = None
+        self._area = None
 
     def __str__(self) -> str:
         """
@@ -34,7 +34,7 @@ class Фигура:
         Returns:
             str: Строковое представление фигуры.
         """
-        return f"{self._название}({self._периметр}, {self._площадь})"
+        return f"{self._name}({self._perimeter}, {self._area})"
 
     def __repr__(self) -> str:
         """
@@ -43,38 +43,38 @@ class Фигура:
         Returns:
             str: Каноническое представление фигуры.
         """
-        return f"{type(self).__name__}('{self._название}')"
+        return f"{type(self).__name__}('{self._name}')"
 
-    def get_название(self) -> str:
+    def get_name(self) -> str:
         """
         Возвращает название фигуры.
 
         Returns:
             str: Название фигуры.
         """
-        return self._название
+        return self._name
 
-    def get_периметр(self) -> float:
+    def get_perimeter(self) -> float:
         """
         Возвращает периметр фигуры.
 
         Returns:
             float: Периметр фигуры.
         """
-        if self._периметр is None:
-            self._периметр = self._calculate_perimeter()
-        return self._периметр
+        if self._perimeter is None:
+            self._perimeter = self._calculate_perimeter()
+        return self._perimeter
 
-    def get_площадь(self) -> float:
+    def get_area(self) -> float:
         """
         Возвращает площадь фигуры.
 
         Returns:
             float: Площадь фигуры.
         """
-        if self._площадь is None:
-            self._площадь = self._calculate_area()
-        return self._площадь
+        if self._area is None:
+            self._area = self._calculate_area()
+        return self._area
 
     def _calculate_perimeter(self) -> float:
         """
@@ -95,7 +95,7 @@ class Фигура:
         raise NotImplementedError
 
 
-class Прямоугольник(Фигура):
+class Rect(Shape):
     """
     Класс, представляющий прямоугольник.
 
@@ -109,20 +109,20 @@ class Прямоугольник(Фигура):
         get_площадь(self) -> float: Возвращает площадь прямоугольника.
     """
 
-    def __init__(self, название: str, длина: float, ширина: float) -> None:
+    def __init__(self, name: str, length: float, width: float) -> None:
         """
         Инициализирует прямоугольник.
 
         Args:
-            название (str): Название прямоугольника.
-            длина (float): Длина стороны прямоугольника.
-            ширина (float): Ширина стороны прямоугольника.
+            name (str): Название прямоугольника.
+            length (float): Длина стороны прямоугольника.
+            width (float): Ширина стороны прямоугольника.
         """
-        super().__init__(название)
-        self._длина = длина
-        self._ширина = ширина
+        super().__init__(name)
+        self._length = length
+        self._width = width
 
-    def get_периметр(self) -> float:
+    def get_perimeter(self) -> float:
         """
         Возвращает периметр прямоугольника.
 
